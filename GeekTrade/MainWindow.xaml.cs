@@ -45,6 +45,7 @@ namespace GeekTrade
         {
             ScreenNews.Visibility = Visibility.Hidden;
             ScreenListView.Visibility = Visibility.Visible;
+            //Test branch
         }
     }
 }
