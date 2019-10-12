@@ -140,5 +140,11 @@
   <ItemGroup>
     <Folder Include="Img\Assets\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTBusiness\GTBusiness.csproj">
+      <Project>{5a432b17-410d-41ea-b270-b7a52ba2f898}</Project>
+      <Name>GTBusiness</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekTrade", "GeekTrade\GeekTrade.csproj", "{D8EE88C7-2436-42E9-B928-A2938B77D2B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTDataLayer", "GTDataLayer\GTDataLayer.csproj", "{7DEB429B-163A-447C-BEC4-504E6581D832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTBusiness", "GTBusiness\GTBusiness.csproj", "{5A432B17-410D-41EA-B270-B7A52BA2F898}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D8EE88C7-2436-42E9-B928-A2938B77D2B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8EE88C7-2436-42E9-B928-A2938B77D2B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8EE88C7-2436-42E9-B928-A2938B77D2B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEB429B-163A-447C-BEC4-504E6581D832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEB429B-163A-447C-BEC4-504E6581D832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEB429B-163A-447C-BEC4-504E6581D832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEB429B-163A-447C-BEC4-504E6581D832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A432B17-410D-41EA-B270-B7A52BA2F898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A432B17-410D-41EA-B270-B7A52BA2F898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A432B17-410D-41EA-B270-B7A52BA2F898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A432B17-410D-41EA-B270-B7A52BA2F898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
