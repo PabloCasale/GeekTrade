@@ -140,11 +140,5 @@
   <ItemGroup>
     <Folder Include="Img\Assets\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Profiles\Profiles.csproj">
-      <Project>{e80b945b-7e73-4d34-853e-4291e961781e}</Project>
-      <Name>Profiles</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
