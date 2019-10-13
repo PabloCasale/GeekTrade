@@ -140,9 +140,9 @@
     <Folder Include="Img\Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GTBusiness\GTBusiness.csproj">
-      <Project>{5a432b17-410d-41ea-b270-b7a52ba2f898}</Project>
-      <Name>GTBusiness</Name>
+    <ProjectReference Include="..\GTBusinessLayer\GTBusinessLayer.csproj">
+      <Project>{3338e071-a5d2-422a-b70c-6a21270c28ab}</Project>
+      <Name>GTBusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

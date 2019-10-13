@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-namespace GTDataLayer
+namespace GTBusinessLayer
 {
-    class DAT
+    public class Offer
     {
-        
     }
 }
