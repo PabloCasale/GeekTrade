@@ -4,24 +4,8 @@ using System.Text;
 
 namespace GTBusinessLayer
 {
-    public class Profile:User
+    public abstract class Profile
     {
-        public Profile(string name,string email)
-        {
-            this.Name = name;
-            this.Email = email;
-        }
-
-
-        public string GetName()
-        {
-            return this.Name;
-        }
-
-        public string GetEmail()
-        {
-            return this.Email;
-        }
-
+        public abstract string GetRole();
     }
 }

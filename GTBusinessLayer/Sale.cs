@@ -21,12 +21,12 @@ namespace GTBusinessLayer
 
         public string GetSeller()
         {
-            return Seller.Name;
+            return null;
         }
 
         public string GetBuyer()
         {
-            return Buyer.Name;
+            return null;
         }
 
 

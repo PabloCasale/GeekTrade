@@ -15,16 +15,16 @@ namespace GTBusinessLayer
         public int SKU { get; private set; }
 
 
-        public Product(string name, double value, string image)
+        public Product(string name, double price, string image)
         {
             Name = name;
-            Price = value;
+            Price = price;
             Image = image;
         }
-        public Product(string name, double value, string image, Provider provider)
+        public Product(string name, double price, string image, Provider provider)
         {
             Name = name;
-            Price = value;
+            Price = price;
             Image = image;
             _provider = provider;
         }

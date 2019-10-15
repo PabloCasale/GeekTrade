@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="EnumRoles.cs" />
     <Compile Include="Offer.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
+    <Compile Include="Registered.cs" />
     <Compile Include="Sale.cs" />
     <Compile Include="SalesDetail.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GTData\GTData.csproj">

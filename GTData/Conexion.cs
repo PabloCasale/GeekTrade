@@ -24,7 +24,11 @@ namespace GTData
          */
         private void Connect()
         {
-            stringConnection = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=AlmacenDeProductos;Data Source=.\\INSTANCIASQL2008";
+            stringConnection = "Integrated Security=SSPI;" +
+                "Persist Security" +
+                " Info=False;Initial" +
+                " Catalog=GeekTrade;" +
+                "Data Source=.\\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();

@@ -48,10 +48,13 @@
       <Label Content="GEEK TRADE" FontSize="36" Foreground="White" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,5,5"/>
       <Separator Width="10" Background="{x:Null}" Foreground="{x:Null}"/>
       <Image Source="Img/alien.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
-      <Separator Width="450" Background="{x:Null}" Foreground="{x:Null}"/>
-      <Button x:Name="btnSignIn" Content="SignIn" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Width="72" Margin="2,5" Height="58" FontSize="18"/>
+      <Separator Width="100" Background="{x:Null}" Foreground="{x:Null}"/>
+      <TextBlock x:Name="txtUser" Width="200" VerticalAlignment="Center"/>
+      <Separator Width="100" Background="{x:Null}" Foreground="{x:Null}"/>
+
+      <Button x:Name="btnSignIn" Content="SignIn" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Width="72" Margin="2,5" Height="58" FontSize="18" Cursor="Hand" Click="Btn_Action"/>
       <Separator Width="75" Background="{x:Null}" Foreground="{x:Null}"/>
-      <Button x:Name="btnLogIn" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="5,12,-3,12" Width="72" Height="58" FontSize="18"/>
+      <Button x:Name="btnLogIn" Content="Login" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="5,12,-3,12" Width="72" Height="58" FontSize="18" Cursor="Hand" Click="Btn_Action"/>
     </TabPanel>
     <!--End Top Bar -->
 
@@ -161,40 +164,43 @@
     <!-- End News -->
 
     <!-- log In -->
-    <Grid x:Name="ScreenLogin" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
-      <Grid.Background>
-        <ImageBrush ImageSource="Img/marvelback3.jpg"/>
-      </Grid.Background>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="4*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="2*"/>
-        <ColumnDefinition Width="4*"/>
-        <ColumnDefinition Width="2*"/>
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
-        <TextBlock Text="LOG IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
-        <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Label Content="NAME" Margin="50,0"/>
+    <Border Visibility="Hidden"  x:Name="ScreenLogin" Grid.RowSpan="2" Grid.ColumnSpan="3" BorderThickness="10" Background="#FF69B6B9" BorderBrush="#FF69B6B9">
+      <Grid  Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Visible">
+        <Grid.Background>
+          <ImageBrush ImageSource="Img/marvelback3.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="4*"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="2*"/>
+          <ColumnDefinition Width="4*"/>
+          <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
+          <TextBlock Text="LOG IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
+          <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
+          <Label Content="NAME" Margin="50,0"/>
 
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+          <TextBox Background="White" Margin="50,0" Foreground="Black" />
+          <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
 
-        <Label Content="PASSWORD" Margin="50,0"/>
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
+          <Label Content="PASSWORD" Margin="50,0"/>
+          <TextBox Background="White" Margin="50,0" Foreground="Black" />
 
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
-      </StackPanel>
+          <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+          <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
+        </StackPanel>
 
-    </Grid>
+      </Grid>
+    </Border>
     <!--End log In -->
 
     <!-- Sign In -->
-    <Grid x:Name="ScreenSignIn" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
+    <Border Visibility="Hidden"  x:Name="ScreenSignIn" Grid.RowSpan="2" Grid.ColumnSpan="3" BorderThickness="10" BorderBrush="#FF529595" Background="Black">
+    <Grid Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Visible">
       <Grid.Background>
         <ImageBrush ImageSource="Img/dcback1.jpg"/>
       </Grid.Background>
@@ -224,10 +230,12 @@
       </StackPanel>
 
     </Grid>
+    </Border>
     <!--End log In -->
 
     <!-- listing -->
-    <ScrollViewer x:Name="ScreenListView" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,5" Visibility="Hidden">
+    <Border x:Name="ScreenListView" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Visibility="Hidden">
+      <ScrollViewer  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,5">
       <StackPanel >
         <StackPanel.Background>
           <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -249,7 +257,7 @@
                         <ImageBrush ImageSource="{Binding Image}"/>
                       </Border.Background>
                       <TabPanel Background="#FF2C003E" Margin="0,150,0,0">
-                        <TextBlock Margin="0" Text="{Binding Value, StringFormat={}{0:C}}" FontSize="20" FontWeight="SemiBold" Background="#FF41AAA8" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="White" />
+                        <TextBlock Margin="0" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="20" FontWeight="SemiBold" Background="#FF41AAA8" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="White" />
                         <Button Margin="0,0" Content="INFO" FontSize="20" Background="{x:Null}" Width="90" HorizontalAlignment="Stretch" Padding="5,0" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand"/>
                       </TabPanel>
                     </Border>
@@ -266,6 +274,7 @@
         </StackPanel>
       </StackPanel>
     </ScrollViewer>
+    </Border>
     <!-- End listing -->
 
     <!--Footer-->

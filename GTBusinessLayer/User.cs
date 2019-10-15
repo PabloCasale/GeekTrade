@@ -4,19 +4,32 @@ using System.Text;
 
 namespace GTBusinessLayer
 {
-    public abstract class User
+    public class User
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public int ID { get; set; }
-        public string Password { get; set; }
+        Profile profile;
+        public User()
+        {
+            profile = new Visitor();
+        }
+        public User(Profile profile)
+        {
+            this.profile = profile;
+        }
+        public void SetProfile(Profile profile)
+        {
+            this.profile = profile;
+        }
 
-        public bool Registered { get; set; }
+        public string GetRole()
+        {
+            return this.profile.GetRole();
+        }
 
         public override string ToString()
         {
-            var reg = Registered ? "SI" : "NO";
-            return $"Usuario:{ID} Nombre:{Name} Registrado:{reg}";
+            string reg = "Visitor";
+            reg = profile.GetRole().Equals(reg) ? "NO" : "SI";
+            return $"Registrado:{reg}";
         }
 
     }

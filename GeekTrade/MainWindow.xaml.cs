@@ -25,6 +25,16 @@ namespace GeekTrade
         public MainWindow()
         {
             InitializeComponent();
+            List<string> screens = new List<string>()
+            {
+                ScreenListView.Name,
+                ScreenLogin.Name,
+                ScreenNews.Name,
+                ScreenSignIn.Name
+            };
+            var user = new User();
+            txtUser.Text = user.GetRole();
+
             var products = GetProducts();
             if (products.Count > 0)
             {
@@ -45,9 +55,30 @@ namespace GeekTrade
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            ScreenNews.Visibility = Visibility.Hidden;
-            ScreenListView.Visibility = Visibility.Visible;
-            //Test branch
+            
+        }
+
+
+
+        private void ScreenManager()
+        {
+
+        }
+
+        private void Btn_Action(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            switch (button.Name)
+            {
+                case "btnSignIn":
+                    //Todavia no termine esto
+                    break;
+                case "btnLogin":
+                    
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
