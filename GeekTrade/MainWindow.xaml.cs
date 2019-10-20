@@ -21,27 +21,40 @@ namespace GeekTrade
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        Dictionary<string, Border> screens;
+        List<Product> products;
         public MainWindow()
         {
             InitializeComponent();
-            List<string> screens = new List<string>()
+            screens = new Dictionary<string, Border>()
             {
-                ScreenListView.Name,
-                ScreenLogin.Name,
-                ScreenNews.Name,
-                ScreenSignIn.Name
+                { "btnSearch" , ScreenListView },
+                { "btnLogIn" , ScreenLogin},
+                { "btnHome" , ScreenNews},
+                { "btnSignIn" , ScreenSignIn}
             };
             var user = new User();
             txtUser.Text = user.GetRole();
 
-            var products = GetProducts();
+            products = GetProducts();
             if (products.Count > 0)
             {
                 Listviewproducts.ItemsSource = products;
             }
-
+            
         }
+
+
+        public void GetDetail(string name)
+        {
+            
+            DetailName.Text = name;
+            DetailPrice.Text = "$"+ products[0].Price.ToString();
+            DI.Source = new BitmapImage(new Uri(@"/Img/Icons/dk.jpg", UriKind.Relative));
+            
+        }
+
 
         private List<Product> GetProducts()
         {
@@ -53,32 +66,72 @@ namespace GeekTrade
             return p;
         }
 
-        private void Btn_Search_Click(object sender, RoutedEventArgs e)
+
+        private void ScreenManager(string name)
         {
-            
+            screens[name].Visibility = Visibility.Visible;
+            foreach (var k in screens.Keys)
+            {
+                if (!k.Equals(name))
+                {
+                    screens[k].Visibility = Visibility.Hidden;
+                }
+            }
         }
 
-
-
-        private void ScreenManager()
-        {
-
-        }
 
         private void Btn_Action(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            switch (button.Name)
+            ScreenManager(button.Name);
+        }
+
+        private void On_Click_SignIn(object sender, RoutedEventArgs e)
+        {
+            var userName = txtSignInName.Text;
+            var pass = txtSignInPass.Password;
+
+            if (pass=="123" && userName=="admin")//buscar en base de datos
             {
-                case "btnSignIn":
-                    //Todavia no termine esto
-                    break;
-                case "btnLogin":
-                    
-                    break;
-                default:
-                    break;
+                txtUser.Text = userName;
+                signInWarning.Visibility = Visibility.Hidden;
+                ScreenManager("btnHome");
             }
+            else
+            {
+                txtSignInName.Text = "";
+                txtSignInPass.Password= "";
+                signInWarning.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void On_Click_LogIn(object sender, RoutedEventArgs e)
+        {
+            var email = txtEmailLogin.Text;
+            var pass = passLogIn.Password;
+
+            if (pass == "123" && email == "admin@admin.com")//buscar en base de datos
+            {
+                txtUser.Text = email;
+                signInWarning.Visibility = Visibility.Hidden;
+                btnLogIn.Visibility = Visibility.Hidden;
+                btnLogOut.Visibility = Visibility.Visible;
+                ScreenManager("btnHome");
+            }
+            else
+            {
+                txtEmailLogin.Text = "";
+                passLogIn.Password = "";
+                LogInWarning.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void On_Click_Info(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            var name = b.DataContext.ToString();
+            ScreenDetail.Visibility = Visibility.Visible;
+            GetDetail(name);
         }
     }
 }
