@@ -46,5 +46,11 @@ namespace GeekTrade
             ScreenNews.Visibility = Visibility.Hidden;
             ScreenListView.Visibility = Visibility.Visible;
         }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            ScreenNews.Visibility = Visibility.Visible ;
+            ScreenListView.Visibility = Visibility.Hidden ;
+        }
     }
 }

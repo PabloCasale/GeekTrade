@@ -6,279 +6,279 @@
         xmlns:local="clr-namespace:GeekTrade"
         mc:Ignorable="d"
         Title="GeekTrade" Height="720" Width="980" Foreground="White" Background="#FF383838" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Img/Icons/appbar.starwars.rebel.png">
-  <Window.Resources>
-    <Style TargetType="TextBox" >
-      <Setter Property="FontSize" Value="24"/>
-      <Setter Property="Background" Value="Black"/>
-      <Setter Property="Foreground" Value="White"/>
-    </Style>
-    <Style TargetType="TextBlock" >
-      <Setter Property="FontSize" Value="22"/>
-      <Setter Property="FontWeight" Value="SemiBold"/>
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="Foreground" Value="White"/>
-    </Style>
-    <Style TargetType="CheckBox">
-      <Setter Property="Foreground" Value="WhiteSmoke"/>
-      <Setter Property="Margin" Value="0,2,0,0"/>
-    </Style>
-    <!-- Palettes
+    <Window.Resources>
+        <Style TargetType="TextBox" >
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock" >
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+        </Style>
+        <!-- Palettes
     #d2fafb
     #51dacf
     #41aaa8
     #2c003e
     -->
-  </Window.Resources>
-  <Grid x:Name="MainGrid">
-    <!-- grid definition -->
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50*"/>
-      <RowDefinition Height="599*"/>
-      <RowDefinition Height="42*"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="2*"/>
-      <ColumnDefinition Width="3*"/>
-      <ColumnDefinition Width="3*"/>
-    </Grid.ColumnDefinitions>
-    <!-- end definition-->
-
-    <!--Top Bar -->
-    <TabPanel Background="Black" Grid.ColumnSpan="3">
-      <Label Content="GEEK TRADE" FontSize="36" Foreground="White" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,5,5"/>
-      <Separator Width="10" Background="{x:Null}" Foreground="{x:Null}"/>
-      <Image Source="Img/alien.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
-      <Separator Width="450" Background="{x:Null}" Foreground="{x:Null}"/>
-      <Button x:Name="btnSignIn" Content="SignIn" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Width="72" Margin="2,5" Height="58" FontSize="18"/>
-      <Separator Width="75" Background="{x:Null}" Foreground="{x:Null}"/>
-      <Button x:Name="btnLogIn" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="5,12,-3,12" Width="72" Height="58" FontSize="18"/>
-    </TabPanel>
-    <!--End Top Bar -->
-
-    <!-- Side Menu -->
-    <Border BorderBrush="White" BorderThickness="2" Grid.Row="1" Grid.Column="0" Margin="10,10,10,5" Visibility="Visible">
-      <StackPanel Background="#BF708090">
-        <TextBlock Text="Catalogo" Margin="0,0" Background="#3F51DACF" Padding="5,5"/>
-        <Separator/>
-        <StackPanel Margin="10,15,10,5" Height="505">
-          <TextBlock Text="TOYS" Background="#FF41AAA8" Margin="0,0,0,5" Padding="10,0,0,0" />
-          <StackPanel Margin="10,0,10,2">
-            <CheckBox Content="Games"/>
-            <CheckBox Content="Movies"/>
-            <CheckBox Content="Comics"/>
-            <CheckBox Content="Funko"/>
-          </StackPanel>
-          <TextBlock Text="MOVIES" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0" />
-          <StackPanel Margin="10,0,10,2">
-            <CheckBox Content="Retro"/>
-            <CheckBox Content="Terror"/>
-            <CheckBox Content="Sci-Fi"/>
-            <CheckBox Content="Classics"/>
-          </StackPanel>
-          <TextBlock Text="COMICS" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0"/>
-          <StackPanel Margin="10,0,10,2">
-            <CheckBox Content="Marvel"/>
-            <CheckBox Content="DC"/>
-            <CheckBox Content="Manga"/>
-          </StackPanel>
-          <TextBlock Text="TECH" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0"/>
-          <StackPanel Margin="10,0,10,2">
-            <CheckBox Content="PC"/>
-            <CheckBox Content="Smartphone"/>
-            <CheckBox Content="Notebook"/>
-            <CheckBox Content="Gadgets"/>
-          </StackPanel>
-          <Separator Height="5"/>
-          <Button x:Name="btnSearch" Content="BUSCAR" Height="50" FontSize="24" Margin="0" Padding="1,0" BorderBrush="#FF00DCFF" FontFamily="Segoe UI Black" Cursor="Hand" Background="#FF2C003E" Foreground="White" Click="Btn_Search_Click"/>
-        </StackPanel>
-      </StackPanel>
-    </Border>
-    <!-- End Side Menu -->
-
-    <!-- News Component -->
-    <Border x:Name="ScreenNews" Margin="10,10" BorderThickness="2" BorderBrush="White" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-      <Grid Margin="0,0,0,0" Background="Black">
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+        <!-- grid definition -->
         <Grid.RowDefinitions>
-          <RowDefinition Height="63*"/>
-          <RowDefinition Height="50*"/>
-          <RowDefinition Height="203*"/>
-          <RowDefinition Height="252*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="599*"/>
+            <RowDefinition Height="42*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
+        <!-- end definition-->
 
-        <TextBlock Text="NOVEDADES" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="36" FontFamily="Segoe UI Black" VerticalAlignment="Center" Height="56" Margin="0,0,0,7">
-          <TextBlock.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-              <GradientStop Color="#FF2C003E" Offset="0"/>
-              <GradientStop Color="#3F2C003E" Offset="1"/>
-            </LinearGradientBrush>
-          </TextBlock.Background>
-        </TextBlock>
-        <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="1" Grid.RowSpan="2">
-          <TextBlock Text="IRON MAN" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
-          <Image Source="Img/Icons/ironcase.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
-          <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
-            <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
-            <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
-            <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
-          </StackPanel>
-        </Canvas>
+        <!--Top Bar -->
+        <TabPanel Background="Black" Grid.ColumnSpan="3">
+            <Label Content="GEEK TRADE" FontSize="36" Foreground="White" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,0,5,5"/>
+            <Separator Width="10" Background="{x:Null}" Foreground="{x:Null}"/>
+            <Image Source="Img/alien.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+            <Separator Width="450" Background="{x:Null}" Foreground="{x:Null}"/>
+            <Button x:Name="btnSignIn" Content="SignIn" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Width="72" Margin="2,5" Height="58" FontSize="18"/>
+            <Separator Width="75" Background="{x:Null}" Foreground="{x:Null}"/>
+            <Button x:Name="btnLogIn" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="5,12,-3,12" Width="72" Height="58" FontSize="18"/>
+        </TabPanel>
+        <!--End Top Bar -->
 
-        <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
-          <TextBlock Text="WOLVERINE" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
-          <Image Source="Img/Icons/logan.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
-          <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
-            <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
-            <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
-            <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
-          </StackPanel>
-        </Canvas>
+        <!-- Side Menu -->
+        <Border BorderBrush="White" BorderThickness="2" Grid.Row="1" Grid.Column="0" Margin="10,10,10,5" Visibility="Visible">
+            <StackPanel Background="#BF708090">
+                <TextBlock Text="Catalogo" Margin="0,0" Background="#3F51DACF" Padding="5,5"/>
+                <Separator/>
+                <StackPanel Margin="10,15,10,5" Height="505">
+                    <TextBlock Text="TOYS" Background="#FF41AAA8" Margin="0,0,0,5" Padding="10,0,0,0" />
+                    <StackPanel Margin="10,0,10,2">
+                        <CheckBox Content="Games"/>
+                        <CheckBox Content="Movies"/>
+                        <CheckBox Content="Comics"/>
+                        <CheckBox Content="Funko"/>
+                    </StackPanel>
+                    <TextBlock Text="MOVIES" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0" />
+                    <StackPanel Margin="10,0,10,2">
+                        <CheckBox Content="Retro"/>
+                        <CheckBox Content="Terror"/>
+                        <CheckBox Content="Sci-Fi"/>
+                        <CheckBox Content="Classics"/>
+                    </StackPanel>
+                    <TextBlock Text="COMICS" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0"/>
+                    <StackPanel Margin="10,0,10,2">
+                        <CheckBox Content="Marvel"/>
+                        <CheckBox Content="DC"/>
+                        <CheckBox Content="Manga"/>
+                    </StackPanel>
+                    <TextBlock Text="TECH" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0"/>
+                    <StackPanel Margin="10,0,10,2">
+                        <CheckBox Content="PC"/>
+                        <CheckBox Content="Smartphone"/>
+                        <CheckBox Content="Notebook"/>
+                        <CheckBox Content="Gadgets"/>
+                    </StackPanel>
+                    <Separator Height="5"/>
+                    <Button x:Name="btnSearch" Content="BUSCAR" Height="50" FontSize="24" Margin="0" Padding="1,0" BorderBrush="#FF00DCFF" FontFamily="Segoe UI Black" Cursor="Hand" Background="#FF2C003E" Foreground="White" Click="Btn_Search_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <!-- End Side Menu -->
 
-        <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="3" Grid.Column="0">
-          <TextBlock Text="SPIDER MAN" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
-          <Image Source="Img/Icons/spider.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
-          <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
-            <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
-            <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
-            <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
-          </StackPanel>
-        </Canvas>
+        <!-- News Component -->
+        <Border x:Name="ScreenNews" Margin="10,10" BorderThickness="2" BorderBrush="White" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid Margin="0,0,0,0" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="63*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="203*"/>
+                    <RowDefinition Height="252*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="3" Grid.Column="1">
-          <TextBlock Text="NINTENDO" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
-          <Image Source="Img/Icons/switch.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
-          <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
-            <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
-            <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
-            <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
-          </StackPanel>
-        </Canvas>
-      </Grid>
-    </Border>
-    <!-- End News -->
+                <TextBlock Text="NOVEDADES" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="36" FontFamily="Segoe UI Black" VerticalAlignment="Center" Height="56" Margin="0,0,0,7">
+                    <TextBlock.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2C003E" Offset="0"/>
+                            <GradientStop Color="#3F2C003E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                </TextBlock>
+                <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="1" Grid.RowSpan="2">
+                    <TextBlock Text="IRON MAN" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
+                    <Image Source="Img/Icons/ironcase.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
+                    <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
+                        <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
+                    </StackPanel>
+                </Canvas>
 
-    <!-- log In -->
-    <Grid x:Name="ScreenLogin" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
-      <Grid.Background>
-        <ImageBrush ImageSource="Img/marvelback3.jpg"/>
-      </Grid.Background>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="4*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="2*"/>
-        <ColumnDefinition Width="4*"/>
-        <ColumnDefinition Width="2*"/>
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
-        <TextBlock Text="LOG IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
-        <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Label Content="NAME" Margin="50,0"/>
+                <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                    <TextBlock Text="WOLVERINE" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
+                    <Image Source="Img/Icons/logan.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
+                    <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
+                        <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
+                    </StackPanel>
+                </Canvas>
 
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="3" Grid.Column="0">
+                    <TextBlock Text="SPIDER MAN" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
+                    <Image Source="Img/Icons/spider.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
+                    <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
+                        <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
+                    </StackPanel>
+                </Canvas>
 
-        <Label Content="PASSWORD" Margin="50,0"/>
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
+                <Canvas Background="#FF1F2121" Margin="5,5" Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text="NINTENDO" Canvas.Left="10" Canvas.Top="5" Width="323" Background="#FF2F7070" Padding="5,0,0,0" Margin="0"/>
+                    <Image Source="Img/Icons/switch.jpg" Width="208" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="39"/>
+                    <StackPanel Canvas.Left="240" Height="194" Canvas.Top="34">
+                        <Image Source="Img/Icons/staradd.png" Canvas.Left="257" Canvas.Top="36" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/heart_outline.png" Canvas.Left="257" Canvas.Top="112" Width="65" Height="65"/>
+                        <Image Source="Img/Icons/info_circle.png" Canvas.Left="257" Canvas.Top="188" Width="65" Height="65"/>
+                    </StackPanel>
+                </Canvas>
+            </Grid>
+        </Border>
+        <!-- End News -->
 
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
-      </StackPanel>
+        <!-- log In -->
+        <Grid x:Name="ScreenLogin" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
+            <Grid.Background>
+                <ImageBrush ImageSource="Img/marvelback3.jpg"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
+                <TextBlock Text="LOG IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
+                <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Label Content="NAME" Margin="50,0"/>
 
-    </Grid>
-    <!--End log In -->
+                <TextBox Background="White" Margin="50,0" Foreground="Black" />
+                <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
 
-    <!-- Sign In -->
-    <Grid x:Name="ScreenSignIn" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
-      <Grid.Background>
-        <ImageBrush ImageSource="Img/dcback1.jpg"/>
-      </Grid.Background>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="4*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="2*"/>
-        <ColumnDefinition Width="4*"/>
-        <ColumnDefinition Width="2*"/>
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
-        <TextBlock Text="SIGN IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
-        <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Label Content="NAME" Margin="50,0"/>
+                <Label Content="PASSWORD" Margin="50,0"/>
+                <TextBox Background="White" Margin="50,0" Foreground="Black" />
 
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
+            </StackPanel>
 
-        <Label Content="PASSWORD" Margin="50,0"/>
-        <TextBox Background="White" Margin="50,0" Foreground="Black" />
+        </Grid>
+        <!--End log In -->
 
-        <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
-        <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
-      </StackPanel>
+        <!-- Sign In -->
+        <Grid x:Name="ScreenSignIn" Grid.ColumnSpan="3" Margin="10,0" Grid.Row="1" Visibility="Hidden">
+            <Grid.Background>
+                <ImageBrush ImageSource="Img/dcback1.jpg"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="1" Background="#FFE0E0E0">
+                <TextBlock Text="SIGN IN" FontSize="36" Grid.Column="1" Grid.Row="1" TextAlignment="Center" Background="#FF68E4FF"/>
+                <Separator Height="50" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Label Content="NAME" Margin="50,0"/>
 
-    </Grid>
-    <!--End log In -->
+                <TextBox Background="White" Margin="50,0" Foreground="Black" />
+                <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
 
-    <!-- listing -->
-    <ScrollViewer x:Name="ScreenListView" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,5" Visibility="Hidden">
-      <StackPanel >
-        <StackPanel.Background>
-          <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#BF2C003E" Offset="0"/>
-            <GradientStop Color="#3F51DACF" Offset="1"/>
-          </LinearGradientBrush>
-        </StackPanel.Background>
-        <TextBlock Text=" ITEMS" FontSize="24" FontWeight="Bold" Background="#BF2C003E" />
-        <Separator />
-        <StackPanel Margin="20,0">
-          <ItemsControl x:Name="Listviewproducts" ItemsSource="{Binding Product}">
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <Border  Margin="10" Width="200" Height="200">
-                  <StackPanel>
-                    <TextBlock Text="{Binding Name}" Background="#3F808080" Margin="5,0,10,0" FontSize="16" Padding="10,0,0,0" FontFamily="Segoe UI Semibold" Panel.ZIndex="10"/>
-                    <Border Width="190" Height="190" CornerRadius="5" Margin="5,-1,5,5">
-                      <Border.Background>
-                        <ImageBrush ImageSource="{Binding Image}"/>
-                      </Border.Background>
-                      <TabPanel Background="#FF2C003E" Margin="0,150,0,0">
-                        <TextBlock Margin="0" Text="{Binding Value, StringFormat={}{0:C}}" FontSize="20" FontWeight="SemiBold" Background="#FF41AAA8" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="White" />
-                        <Button Margin="0,0" Content="INFO" FontSize="20" Background="{x:Null}" Width="90" HorizontalAlignment="Stretch" Padding="5,0" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand"/>
-                      </TabPanel>
-                    </Border>
-                  </StackPanel>
-                </Border>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                <WrapPanel/>
-              </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-          </ItemsControl>
-        </StackPanel>
-      </StackPanel>
-    </ScrollViewer>
-    <!-- End listing -->
+                <Label Content="PASSWORD" Margin="50,0"/>
+                <TextBox Background="White" Margin="50,0" Foreground="Black" />
 
-    <!--Footer-->
-    <Rectangle Fill="#FF292929" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
-    <Button x:Name="btnHome" Grid.Row="2" Grid.Column="0" Content="HOME" Background="{x:Null}" BorderBrush="{x:Null}" Margin="106,9,80,9" Foreground="Gainsboro" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="24" Width="58" FontFamily="Segoe UI Semibold" />
-    <Label Grid.Row="2" Grid.Column="1" Content="Copyright@pcasale-2019" Background="{x:Null}" BorderBrush="{x:Null}" Margin="118,8,57,8" Foreground="Gainsboro" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" Width="190" />
-    <Button Grid.Row="1" Grid.Column="2" Width="65" VerticalAlignment="Center" HorizontalAlignment="Center" Height="64" BorderBrush="{x:Null}" Margin="130,582,130,-5" Grid.RowSpan="2" >
-      <Button.Background>
-        <ImageBrush ImageSource="Img/alien.png" TileMode="Tile"/>
-      </Button.Background>
-    </Button>
-    <!--End Footer-->
-    <!-- item box
+                <Separator Height="30" Foreground="{x:Null}" Background="{x:Null}"/>
+                <Button Content="ACCEPT" Background="#DC64AE64" Height="70" Foreground="White" BorderBrush="#FF427644" FontSize="36" FontFamily="Segoe UI Black" Margin="50,0" FontWeight="Bold" BorderThickness="2"/>
+            </StackPanel>
+
+        </Grid>
+        <!--End log In -->
+
+        <!-- listing -->
+        <ScrollViewer x:Name="ScreenListView" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,5" Visibility="Hidden">
+            <StackPanel >
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#BF2C003E" Offset="0"/>
+                        <GradientStop Color="#3F51DACF" Offset="1"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+                <TextBlock Text=" ITEMS" FontSize="24" FontWeight="Bold" Background="#BF2C003E" />
+                <Separator />
+                <StackPanel Margin="20,0">
+                    <ItemsControl x:Name="Listviewproducts" ItemsSource="{Binding Product}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border  Margin="10" Width="200" Height="200">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}" Background="#3F808080" Margin="5,0,10,0" FontSize="16" Padding="10,0,0,0" FontFamily="Segoe UI Semibold" Panel.ZIndex="10"/>
+                                        <Border Width="190" Height="190" CornerRadius="5" Margin="5,-1,5,5">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Border.Background>
+                                            <TabPanel Background="#FF2C003E" Margin="0,150,0,0">
+                                                <TextBlock Margin="0" Text="{Binding Value, StringFormat={}{0:C}}" FontSize="20" FontWeight="SemiBold" Background="#FF41AAA8" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="White" />
+                                                <Button Margin="0,0" Content="INFO" FontSize="20" Background="{x:Null}" Width="90" HorizontalAlignment="Stretch" Padding="5,0" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand"/>
+                                            </TabPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <!-- End listing -->
+
+        <!--Footer-->
+        <Rectangle Fill="#FF292929" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <Button x:Name="btnHome" Grid.Row="2" Grid.Column="0" Content="HOME" Background="{x:Null}" BorderBrush="{x:Null}" Margin="106,0,80,9" Foreground="Gainsboro" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Height="24" Width="58" FontFamily="Segoe UI Semibold" Click="BtnHome_Click" />
+        <Label Grid.Row="2" Grid.Column="1" Content="Copyright@pcasale-2019" Background="{x:Null}" BorderBrush="{x:Null}" Margin="118,8,57,8" Foreground="Gainsboro" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="26" Width="190" />
+        <Button Grid.Row="1" Grid.Column="2" Width="65" VerticalAlignment="Center" HorizontalAlignment="Center" Height="64" BorderBrush="{x:Null}" Margin="130,582,130,-5" Grid.RowSpan="2" >
+            <Button.Background>
+                <ImageBrush ImageSource="Img/alien.png" TileMode="Tile"/>
+            </Button.Background>
+        </Button>
+        <!--End Footer-->
+        <!-- item box
     <TextBlock Text="ITEMS" Background="LightGray" TextAlignment="Center" Height="38" Padding="0,2,0,0" FontSize="24" FontFamily="Segoe UI Black"/>
       <TabPanel Margin="10">
         <StackPanel>
@@ -293,6 +293,6 @@
       </TabPanel>
     -->
 
-  </Grid>
+    </Grid>
 
 </Window>
