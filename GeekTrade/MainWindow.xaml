@@ -49,13 +49,13 @@
       <Separator Width="10" Background="{x:Null}" Foreground="{x:Null}"/>
       <Image Source="Img/alien.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
       <Separator Width="100" Background="{x:Null}" Foreground="{x:Null}"/>
-      <TextBlock x:Name="txtUser" Width="200" VerticalAlignment="Center"/>
+      <TextBlock x:Name="txtUser" Width="200" VerticalAlignment="Center" FontSize="16"/>
       <Separator Background="{x:Null}" Foreground="{x:Null}" Margin="0,2,-31,2"/>
 
       <Button x:Name="btnSignIn" Content="SignIn" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}" Width="72" Margin="0" Height="58" FontSize="18" Cursor="Hand" Click="Btn_Action"/>
-      <Separator Background="{x:Null}" Foreground="{x:Null}" Margin="0" Width="40"/>
+      <Separator Background="{x:Null}" Foreground="{x:Null}" Margin="0" Width="130"/>
       <Button x:Name="btnLogIn" Content="Login" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="0" Width="72" Height="58" FontSize="18" Cursor="Hand" Click="Btn_Action"/>
-      <Separator Background="{x:Null}" Foreground="{x:Null}" Margin="0" Width="40"/>
+      <Separator Background="{x:Null}" Foreground="{x:Null}" Margin="72,0,-72,0" Width="10"/>
       <Button x:Name="btnLogOut" Visibility="Hidden" Content="LogOut" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Margin="0" Width="72" Height="58" FontSize="18" Cursor="Hand"/>
 
     </TabPanel>
@@ -72,11 +72,9 @@
             <CheckBox Content="Games"/>
             <CheckBox Content="Movies"/>
             <CheckBox Content="Comics"/>
-            <CheckBox Content="Funko"/>
           </StackPanel>
           <TextBlock Text="MOVIES" Background="#FF41AAA8" Margin="0,10,0,5" Padding="10,0,0,0" />
           <StackPanel Margin="10,0,10,2">
-            <CheckBox Content="Retro"/>
             <CheckBox Content="Terror"/>
             <CheckBox Content="Sci-Fi"/>
             <CheckBox Content="Classics"/>
@@ -91,10 +89,9 @@
           <StackPanel Margin="10,0,10,2">
             <CheckBox Content="PC"/>
             <CheckBox Content="Smartphone"/>
-            <CheckBox Content="Notebook"/>
             <CheckBox Content="Gadgets"/>
           </StackPanel>
-          <Separator Height="5"/>
+          <Separator Height="50"/>
           <Button x:Name="btnSearch" Content="BUSCAR" Height="50" FontSize="24" Margin="0" Padding="1,0" BorderBrush="#FF00DCFF" FontFamily="Segoe UI Black" Cursor="Hand" Background="#FF2C003E" Foreground="White" Click="Btn_Action"/>
         </StackPanel>
       </StackPanel>
@@ -256,16 +253,16 @@
             <ItemsControl x:Name="Listviewproducts" ItemsSource="{Binding Product}">
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                  <Border  Margin="10" Width="200" Height="200">
+                  <Border  Margin="10" Width="175" Height="300">
                     <StackPanel>
                       <TextBlock Text="{Binding Name}" Background="#3F808080" Margin="5,0,10,0" FontSize="16" Padding="10,0,0,0" FontFamily="Segoe UI Semibold" Panel.ZIndex="10"/>
-                      <Border Width="190" Height="190" CornerRadius="5" Margin="5,-1,5,5">
+                      <Border Width="175" Height="300" CornerRadius="5" Margin="5,-1,5,5">
                         <Border.Background>
                           <ImageBrush ImageSource="{Binding Image}"/>
                         </Border.Background>
-                        <TabPanel Background="#FF2C003E" Margin="0,150,0,0">
+                        <TabPanel Background="#FF2C003E" Margin="0,250,0,0" Panel.ZIndex="20">
                           <TextBlock Margin="0" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="20" FontWeight="SemiBold" Background="#FF41AAA8" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0" Foreground="White" />
-                          <Button Margin="0,0" DataContext="{Binding Name}" Content="INFO" FontSize="20" Background="{x:Null}" Width="90" HorizontalAlignment="Stretch" Padding="5,0" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="On_Click_Info"/>
+                          <Button x:Name="btnDetail" Margin="0,0" DataContext="{Binding Name}" Content="INFO" FontSize="20" Background="{x:Null}" Width="90" HorizontalAlignment="Stretch" Padding="5,0" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}" Foreground="White" Cursor="Hand" Click="On_Click_Info"/>
                         </TabPanel>
                       </Border>
                     </StackPanel>
@@ -286,7 +283,7 @@
 
     <!--Detail-->
     <Border x:Name="ScreenDetail" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1" BorderBrush="Aqua" BorderThickness="5" Margin="0,10,0,0" Visibility="Hidden">
-      <Grid Background="White">
+      <Grid Background="Black">
         <Grid.RowDefinitions>
           <RowDefinition Height="*"/>
           <RowDefinition Height="6*"/>
@@ -319,8 +316,8 @@
 
         </StackPanel>
         <TextBlock x:Name="DetailPrice" Grid.Row="2" Background="LightSeaGreen" Text="{Binding Price, StringFormat={}{0:C}}" FontSize="36" TextAlignment="Right" Padding="5,10,10,5"/>
-        <Button Content="COMPRAR" Grid.Row="2" Grid.Column="1" Background="BlueViolet" FontSize="36" FontWeight="Bold" Foreground="White"/>
-        <Button Content="VOLVER" Grid.Row="2" Grid.Column="2" Background="SkyBlue" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0"/>
+        <Button x:Name="btnBuy" Content="COMPRAR" Grid.Row="2" Grid.Column="1" Background="BlueViolet" FontSize="36" FontWeight="Bold" Foreground="White"/>
+        <Button x:Name="btnBack" Content="VOLVER" Grid.Row="2" Grid.Column="2" Background="SkyBlue" FontSize="24" FontWeight="Bold" Foreground="#FFF0F0F0" Click="On_Click_Back"/>
       </Grid>
       
     </Border>

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GTBusinessLayer;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace GeekTrade
 {
@@ -24,16 +26,22 @@ namespace GeekTrade
 
         Dictionary<string, Border> screens;
         List<Product> products;
+        
         public MainWindow()
         {
             InitializeComponent();
+
+            
+
             screens = new Dictionary<string, Border>()
             {
                 { "btnSearch" , ScreenListView },
                 { "btnLogIn" , ScreenLogin},
                 { "btnHome" , ScreenNews},
-                { "btnSignIn" , ScreenSignIn}
+                { "btnSignIn" , ScreenSignIn},
+                { "btnDetail" , ScreenDetail},
             };
+            ScreenController.SetWindow(screens);
             var user = new User();
             txtUser.Text = user.GetRole();
 
@@ -48,42 +56,55 @@ namespace GeekTrade
 
         public void GetDetail(string name)
         {
-            
-            DetailName.Text = name;
-            DetailPrice.Text = "$"+ products[0].Price.ToString();
-            DI.Source = new BitmapImage(new Uri(@"/Img/Icons/dk.jpg", UriKind.Relative));
+            var query = from product in products where product.Name == name select product;
+            Product temp = query.FirstOrDefault();
+            DetailName.Text = temp.Name;
+            DetailPrice.Text = "$" + temp.Price;
+            //DI.Source = new BitmapImage(new Uri(temp.Image, UriKind.Relative));
             
         }
 
 
         private List<Product> GetProducts()
         {
-            var p = new List<Product>();
-            for (int i = 0; i < 20; i++)
-            {
-                p.Add(new Product($"Prod {i}", 784.56, "/Img/Icons/dk.jpg"));
-            }
-            return p;
+            List<Product> products = new List<Product>(10);
+            DataTable dt;
+            Product p = new Product();
+            dt = p.Listing();
+            Random r = new Random();
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    products.Add(new Product($"Prod {i}", r.Next(5,50), $"/Img/Movies/Horror/{i}.jpg"));
+            //}
+            products = (from DataRow dr in dt.Rows
+                        select new Product()
+                        {
+                            Name = (string)dr["full_name"],
+                            Price = Convert.ToDouble( dr["price"]),
+                            Image = (byte[])dr["image"]
+                            
+                        }).ToList();
+            return products;
         }
 
 
-        private void ScreenManager(string name)
-        {
-            screens[name].Visibility = Visibility.Visible;
-            foreach (var k in screens.Keys)
-            {
-                if (!k.Equals(name))
-                {
-                    screens[k].Visibility = Visibility.Hidden;
-                }
-            }
-        }
+        //private void ScreenManager(string name)
+        //{
+        //    screens[name].Visibility = Visibility.Visible;
+        //    foreach (var key in screens.Keys)
+        //    {
+        //        if (!key.Equals(name))
+        //        {
+        //            screens[key].Visibility = Visibility.Hidden;
+        //        }
+        //    }
+        //}
 
 
         private void Btn_Action(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            ScreenManager(button.Name);
+            ScreenController.ControlVisibility(button.Name);
         }
 
         private void On_Click_SignIn(object sender, RoutedEventArgs e)
@@ -95,7 +116,8 @@ namespace GeekTrade
             {
                 txtUser.Text = userName;
                 signInWarning.Visibility = Visibility.Hidden;
-                ScreenManager("btnHome");
+                //ScreenManager("btnHome");
+                ScreenController.ControlVisibility("btnHome");
             }
             else
             {
@@ -115,8 +137,9 @@ namespace GeekTrade
                 txtUser.Text = email;
                 signInWarning.Visibility = Visibility.Hidden;
                 btnLogIn.Visibility = Visibility.Hidden;
+                ScreenController.ControlVisibility("btnHome");
                 btnLogOut.Visibility = Visibility.Visible;
-                ScreenManager("btnHome");
+
             }
             else
             {
@@ -130,8 +153,14 @@ namespace GeekTrade
         {
             Button b = (Button)sender;
             var name = b.DataContext.ToString();
-            ScreenDetail.Visibility = Visibility.Visible;
+            ScreenController.ControlVisibility(b.Name);
             GetDetail(name);
+        }
+
+        private void On_Click_Back(object sender, RoutedEventArgs e)
+        {
+            ScreenDetail.Visibility = Visibility.Hidden;
+            ScreenController.ControlVisibility("btnSearch");
         }
     }
 }
