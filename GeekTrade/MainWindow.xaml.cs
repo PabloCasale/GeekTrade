@@ -26,13 +26,11 @@ namespace GeekTrade
 
         Dictionary<string, Border> screens;
         List<Product> products;
-        
+        List<CheckBox> boxes;
         public MainWindow()
         {
             InitializeComponent();
-
-            
-
+            products = new List<Product>();
             screens = new Dictionary<string, Border>()
             {
                 { "btnSearch" , ScreenListView },
@@ -44,66 +42,100 @@ namespace GeekTrade
             ScreenController.SetWindow(screens);
             var user = new User();
             txtUser.Text = user.GetRole();
-
-            products = GetProducts();
-            if (products.Count > 0)
+            boxes = new List<CheckBox>();
+            foreach (CheckBox item in ToysContainer.Children)
             {
-                Listviewproducts.ItemsSource = products;
+                boxes.Add(item);
+            }
+            foreach (CheckBox item in MoviesContainer.Children)
+            {
+                boxes.Add(item);
+            }
+            foreach (CheckBox item in ComicsContainer.Children)
+            {
+                boxes.Add(item);
+            }
+            foreach (CheckBox item in gadgetsContainer.Children)
+            {
+                boxes.Add(item);
             }
             
         }
 
 
-        public void GetDetail(string name)
+        public void GetDetail(string product_name)
         {
-            var query = from product in products where product.Name == name select product;
-            Product temp = query.FirstOrDefault();
-            DetailName.Text = temp.Name;
-            DetailPrice.Text = "$" + temp.Price;
+            var query = from product in products where product.Name == product_name select product;
+            Product p = query.FirstOrDefault();
+            var bind = new Binding("Name") {
+                Source = p
+            };
+            DetailName.SetBinding(TextBlock.TextProperty, bind);
+            bind = new Binding("Image")
+            {
+                Source = p
+            };
+            DI.SetBinding(Image.SourceProperty, bind);
+            bind = new Binding("Price")
+            {
+                Source = p
+            };
+            DetailPrice.SetBinding(TextBlock.TextProperty, bind);
+
+
+            //detailImage.ImageSource = ImageSource.Equals(temp.Image);
             //DI.Source = new BitmapImage(new Uri(temp.Image, UriKind.Relative));
-            
+
         }
 
 
-        private List<Product> GetProducts()
+        private void GetProducts(List<string> genres)
         {
-            List<Product> products = new List<Product>(10);
+            products = new List<Product>();
+            List<Product> temp = new List<Product>();
             DataTable dt;
-            Product p = new Product();
-            dt = p.Listing();
-            Random r = new Random();
-            //for (int i = 0; i < 15; i++)
-            //{
-            //    products.Add(new Product($"Prod {i}", r.Next(5,50), $"/Img/Movies/Horror/{i}.jpg"));
-            //}
-            products = (from DataRow dr in dt.Rows
-                        select new Product()
-                        {
-                            Name = (string)dr["full_name"],
-                            Price = Convert.ToDouble( dr["price"]),
-                            Image = (byte[])dr["image"]
+            Product data = new Product();
+            //dt = p.Listing();
+            foreach (var genre in genres)
+            {
+                dt = data.ListingByGenre(genre);
+                temp = (from DataRow dr in dt.Rows
+                            select new Product()
+                            {
+                                Name = (string)dr["full_name"],
+                                Price = Convert.ToDouble( dr["price"]),
+                                Image = (byte[])dr["image"]
                             
-                        }).ToList();
-            return products;
+                            }).ToList();
+
+                foreach (var item in temp)
+                {
+                    products.Add(item);
+                }
+            }
+            if (products.Count > 0)
+            {
+                Listviewproducts.ItemsSource = products;
+            }
+            temp.Clear();
+
         }
-
-
-        //private void ScreenManager(string name)
-        //{
-        //    screens[name].Visibility = Visibility.Visible;
-        //    foreach (var key in screens.Keys)
-        //    {
-        //        if (!key.Equals(name))
-        //        {
-        //            screens[key].Visibility = Visibility.Hidden;
-        //        }
-        //    }
-        //}
 
 
         private void Btn_Action(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
+            List<string> names = new List<string>();
+            foreach (CheckBox item in boxes)
+            {
+                if (item.IsChecked.Value)
+                {
+                    string sub = item.Name.Substring(3);
+                    names.Add(sub);
+                   
+                }
+            }
+            GetProducts(names);
             ScreenController.ControlVisibility(button.Name);
         }
 

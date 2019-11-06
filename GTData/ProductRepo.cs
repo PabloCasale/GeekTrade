@@ -13,10 +13,24 @@ namespace GTData
         {
             
             Connection db = new Connection();
-
-
             return db.ReadByCommand("select * from Products");
         }
+
+        public DataTable Retrieve(string genre)
+        {
+
+            Connection db = new Connection();
+            return db.ReadByCommand($"select * from Products where genre = '{genre}' ");
+        }
+
+        public DataTable RetrieveByID(int id)
+        {
+
+            Connection db = new Connection();
+            return db.ReadByCommand($"select * from Products where product_id = {id} ");
+        }
+
+
 
         public List<DataTable> RetrieveList()
         {

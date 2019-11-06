@@ -39,5 +39,15 @@ namespace GTBusinessLayer
             ProductRepo product = new ProductRepo();
             return product.Retrieve();
         }
+        public DataTable ListingByGenre(string genre)
+        {
+            ProductRepo product = new ProductRepo();
+            return product.Retrieve(genre);
+        }
+        public DataTable ListingByID(int id)
+        {
+            ProductRepo product = new ProductRepo();
+            return product.RetrieveByID(id);
+        }
     }
 }
