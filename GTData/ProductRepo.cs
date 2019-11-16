@@ -13,7 +13,9 @@ namespace GTData
         {
             
             Connection db = new Connection();
-            return db.ReadByCommand("select * from Products");
+            var query = db.ReadByCommand("select * from Products");
+            
+            return query;
         }
 
         public DataTable Retrieve(string genre)
@@ -32,9 +34,10 @@ namespace GTData
 
 
 
-        public List<DataTable> RetrieveList()
+        public DataTable RetrieveList()
         {
-            return new List<DataTable>();
+            Connection db = new Connection();
+            return db.ReadByCommand($"select * from Products");
         }
 
         public bool Save()

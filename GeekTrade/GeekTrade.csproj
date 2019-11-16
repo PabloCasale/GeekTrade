@@ -172,5 +172,8 @@
     <Resource Include="Img\Movies\Horror\14.jpg" />
     <Resource Include="Img\Movies\Horror\15.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\qr_img.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -59,11 +59,12 @@ namespace GeekTrade
             {
                 boxes.Add(item);
             }
+
             
         }
 
 
-        public void GetDetail(string product_name)
+        public void GetDetailView(string product_name)
         {
             var query = from product in products where product.Name == product_name select product;
             Product p = query.FirstOrDefault();
@@ -81,11 +82,8 @@ namespace GeekTrade
                 Source = p
             };
             DetailPrice.SetBinding(TextBlock.TextProperty, bind);
-
-
             //detailImage.ImageSource = ImageSource.Equals(temp.Image);
             //DI.Source = new BitmapImage(new Uri(temp.Image, UriKind.Relative));
-
         }
 
 
@@ -102,6 +100,7 @@ namespace GeekTrade
                 temp = (from DataRow dr in dt.Rows
                             select new Product()
                             {
+                                SKU = (int)dr["product_id"],
                                 Name = (string)dr["full_name"],
                                 Price = Convert.ToDouble( dr["price"]),
                                 Image = (byte[])dr["image"]
@@ -139,6 +138,28 @@ namespace GeekTrade
             ScreenController.ControlVisibility(button.Name);
         }
 
+        private void SessionRole(string role)
+        {
+            switch (role)
+            {
+                case "visitor":
+                    break;
+                case "registered":
+                    break;
+                case "helper":
+                    break;
+                case "admin":
+                    AdminDashboard();
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void AdminDashboard()
+        {
+            Product p = new Product();
+            dg_admin.ItemsSource = p.Listing().ToList();
+        }
         private void On_Click_SignIn(object sender, RoutedEventArgs e)
         {
             var userName = txtSignInName.Text;
@@ -186,7 +207,7 @@ namespace GeekTrade
             Button b = (Button)sender;
             var name = b.DataContext.ToString();
             ScreenController.ControlVisibility(b.Name);
-            GetDetail(name);
+            GetDetailView(name);
         }
 
         private void On_Click_Back(object sender, RoutedEventArgs e)

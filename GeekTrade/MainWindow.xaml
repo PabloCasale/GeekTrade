@@ -349,6 +349,42 @@
 
     </Border>
 
+    <!-- Admin -->
+    <Border x:Name="screenAdmin" Grid.Row="1" BorderBrush="Aqua" Grid.ColumnSpan="3">
+      <StackPanel Background="BlueViolet" Opacity=".95">
+        <TextBlock x:Name="admindashboard" Text="ADMIN AREA" FontSize="38" Margin="20,10,20,10"/>
+        <TextBlock Text="Dashboard" Margin="20,0,20,30"/>
+        <TabPanel Margin="20,0,20,0" Background="Gray">
+          <TextBlock Text="Nombre"  VerticalAlignment="Center" Margin="5,0,-5,0"/>
+          <TextBox x:Name="name_update" Width="200" Margin="10,0,0,0"/>
+          <Separator Width="20" Background="{x:Null}" />
+          <TextBlock Text="Genero" VerticalAlignment="Center"/>
+          <TextBox x:Name="genre_update" Width="100" Margin="5,0,0,0"/>
+          <Separator Width="20" Background="{x:Null}"/>
+          <TextBlock Text="Precio" VerticalAlignment="Center" />
+          <TextBox x:Name="price_update" Width="100" Margin="5,0,0,0"/>
+          <Separator Width="20" Background="{x:Null}"/>
+          <TextBlock Text="Marca" VerticalAlignment="Center" />
+          <TextBox x:Name="brand_update" Width="100" Margin="5,0,0,0"/>
+        </TabPanel>
+         <TextBlock Text="Listado" Margin="20,5"/>
+        <DataGrid x:Name="dg_admin" Margin="20,10" AutoGenerateColumns="False" Foreground="#FF114A5B" VerticalScrollBarVisibility="Visible" Height="376">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding SKU}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Nombre" Binding="{Binding Name}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Genero" Binding="{Binding Genre}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Precio" Binding="{Binding Price}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Marca" Binding="{Binding Brand}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Descripcion" Binding="{Binding Description}"></DataGridTextColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </Border>
+
+    <!-- Buy -->
+    <Border>
+
+    </Border>
     <!--Footer-->
     <Rectangle Fill="#FF292929" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
     <Button x:Name="btnHome" Grid.Row="2" Grid.Column="0" Content="HOME" Background="{x:Null}" BorderBrush="{x:Null}" Margin="106,9,80,9" Foreground="Gainsboro" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Height="24" Width="58" FontFamily="Segoe UI Semibold" Click="Btn_Action" />
