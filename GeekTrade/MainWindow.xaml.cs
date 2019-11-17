@@ -27,10 +27,19 @@ namespace GeekTrade
         Dictionary<string, Border> screens;
         List<Product> products;
         List<CheckBox> boxes;
+        User user = null;
+        Product product = null;
+        EnumRoles role = EnumRoles.visitor;
         public MainWindow()
         {
             InitializeComponent();
+            this.user = new User(new Visitor());
+            txtUser.Text = user.GetRole();
+            SessionRole(role.ToString());
+
+            product = new Product();
             products = new List<Product>();
+
             screens = new Dictionary<string, Border>()
             {
                 { "btnSearch" , ScreenListView },
@@ -40,8 +49,7 @@ namespace GeekTrade
                 { "btnDetail" , ScreenDetail},
             };
             ScreenController.SetWindow(screens);
-            var user = new User();
-            txtUser.Text = user.GetRole();
+
             boxes = new List<CheckBox>();
             foreach (CheckBox item in ToysContainer.Children)
             {
@@ -60,7 +68,6 @@ namespace GeekTrade
                 boxes.Add(item);
             }
 
-            
         }
 
 
@@ -102,7 +109,7 @@ namespace GeekTrade
                             {
                                 SKU = (int)dr["product_id"],
                                 Name = (string)dr["full_name"],
-                                Price = Convert.ToDouble( dr["price"]),
+                                Price = Convert.ToDecimal( dr["price"]),
                                 Image = (byte[])dr["image"]
                             
                             }).ToList();
@@ -131,7 +138,6 @@ namespace GeekTrade
                 {
                     string sub = item.Name.Substring(3);
                     names.Add(sub);
-                   
                 }
             }
             GetProducts(names);
@@ -140,25 +146,26 @@ namespace GeekTrade
 
         private void SessionRole(string role)
         {
+            MessageBox.Show(role.ToString());
             switch (role)
             {
                 case "visitor":
+                    
                     break;
                 case "registered":
                     break;
                 case "helper":
                     break;
                 case "admin":
-                    AdminDashboard();
+                    AdminDashboard(new Product());
                     break;
                 default:
                     break;
             }
         }
-        private void AdminDashboard()
+        private void AdminDashboard(Product product)
         {
-            Product p = new Product();
-            dg_admin.ItemsSource = p.Listing().ToList();
+            dg_admin.ItemsSource = product.Listing().ToList();
         }
         private void On_Click_SignIn(object sender, RoutedEventArgs e)
         {
@@ -185,8 +192,9 @@ namespace GeekTrade
             var email = txtEmailLogin.Text;
             var pass = passLogIn.Password;
 
-            if (pass == "123" && email == "admin@admin.com")//buscar en base de datos
+            if (user.IsRegistered(email,pass))//buscar en base de datos
             {
+                MessageBox.Show("LOG-IN CORRECTO","Success",MessageBoxButton.OK,MessageBoxImage.Information);
                 txtUser.Text = email;
                 signInWarning.Visibility = Visibility.Hidden;
                 btnLogIn.Visibility = Visibility.Hidden;
@@ -215,5 +223,34 @@ namespace GeekTrade
             ScreenDetail.Visibility = Visibility.Hidden;
             ScreenController.ControlVisibility("btnSearch");
         }
+
+        private void On_Click_Save(object sender, RoutedEventArgs e)
+        {
+            
+            int id = Convert.ToInt32(id_update.Text);
+            var name = name_update.Text;
+            var price = Convert.ToDecimal(price_update.Text);
+            var genre = genre_update.Text;
+            var brand = new Brand(brand_update.Text);
+            Product p = new Product(name, price, null, brand, genre);
+            p.SKU = id;
+            p.Update(p);
+            SessionRole(role.ToString());
+            
+        }
+
+        private void On_Click_Buy(object sender, RoutedEventArgs e)
+        {
+            var error_msg = "Debes estar registrado para realizar una compra".ToUpper();
+            if ( this.role != EnumRoles.registered)
+            {
+                MessageBox.Show(error_msg,"ERROR",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
+
+
+        }
+
+        
     }
 }

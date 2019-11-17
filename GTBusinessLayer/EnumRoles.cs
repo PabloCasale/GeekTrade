@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,13 @@ namespace GTBusinessLayer
 {
     public enum EnumRoles
     {
-        admin,
+        [Description("visitor")]
+        visitor,
+        [Description("registered")]
         registered,
-        official,
-        visitor
+        [Description("helper")]
+        helper,
+        [Description("admin")]
+        admin
     }
 }

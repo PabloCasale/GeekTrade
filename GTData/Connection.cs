@@ -13,8 +13,8 @@ namespace GTData
 {
     public class Connection
     {
-        private SqlConnection objConexion;
-        private string stringConnection = "";
+        public SqlConnection objConexion;
+        public string stringConnection = "";
 
 
         /* -------------------- private void Conectar() ------------ 
@@ -138,8 +138,10 @@ namespace GTData
             return aTable;
         }
 
+        
         public int WriteByCommand(string text)
         {
+            var aTable = new DataTable();
             //Instanció una variable filasAfectadas que va a terminar devolviendo la cantidad de filas afectadas.
             int RowsAffected = 0;
 
@@ -151,9 +153,13 @@ namespace GTData
 
             try
             {
-                objCommand.CommandText = text;
                 objCommand.CommandType = CommandType.Text;
                 objCommand.Connection = this.objConexion;
+                objCommand.CommandText = text;
+
+                //Instancio un adaptador con el parametro SqlCommand
+                var objAdapter = new SqlDataAdapter(objCommand);
+                objAdapter.Fill(aTable);
 
                 //El método ExecuteNonQuery() me devuelve la cantidad de filas afectadas.
                 RowsAffected = objCommand.ExecuteNonQuery();
@@ -175,6 +181,7 @@ namespace GTData
             return RowsAffected;
         }
 
+        
 
         public int WriteByStoreProcedure(string text, SqlParameter[] sqlParameter)
         {

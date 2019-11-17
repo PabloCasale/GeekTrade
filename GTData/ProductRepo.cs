@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,14 @@ namespace GTData
         {
             Connection db = new Connection();
             return db.ReadByCommand($"select * from Products");
+        }
+
+        public int UpdateTable(int id, string name, string genre, string brand, decimal price)
+        {
+            Connection db = new Connection();
+            var query = db.WriteByCommand($"update products set full_name = '{name}', price = {price} where product_id = {id}");
+            
+            return query;
         }
 
         public bool Save()

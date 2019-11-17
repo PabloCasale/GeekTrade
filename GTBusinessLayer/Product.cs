@@ -4,14 +4,14 @@ using System.Data;
 using System.Text;
 using System.Linq;
 using GTData;
-
+using System.Data.SqlClient;
 
 namespace GTBusinessLayer
 {
     public class Product
     {
         public string Name { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public byte[] Image { get; set; }
 
         public string Genre { get; set; }
@@ -23,20 +23,20 @@ namespace GTBusinessLayer
         {
 
         }
-        public Product(string name, double price, byte[] image)
+        public Product(string name, decimal price, byte[] image)
         {
             Name = name;
             Price = price;
             Image = image;
         }
-        public Product(string name, double price, byte[] image, Brand provider)
+        public Product(string name, decimal price, byte[] image, Brand provider)
         {
             Name = name;
             Price = price;
             Image = image;
             Brand = provider;
         }
-        public Product(string name, double price, byte[] image, Brand provider, string genre)
+        public Product(string name, decimal price, byte[] image, Brand provider, string genre)
         {
             Name = name;
             Price = price;
@@ -58,7 +58,7 @@ namespace GTBusinessLayer
                     {
                         SKU = (int)row["product_id"],
                         Name = (string)row["full_name"],
-                        Price = Convert.ToDouble(row["price"]),
+                        Price = Convert.ToDecimal(row["price"]),
                         Genre = (string)row["genre"],
                         Brand = new Brand((string)row["brand"]),
                         Description = (string)row["description"]
@@ -74,6 +74,14 @@ namespace GTBusinessLayer
         {
             ProductRepo product = new ProductRepo();
             return product.RetrieveByID(id);
+        }
+
+        public void Update(Product product )
+        {
+            var p = product;
+            ProductRepo pr = new ProductRepo();
+            var result = pr.UpdateTable(p.SKU, p.Name,p.Genre,p.Brand.name,p.Price);
+          
         }
     }
 }

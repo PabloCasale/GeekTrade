@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using GTData;
 namespace GTBusinessLayer
 {
     public class User
@@ -24,6 +24,14 @@ namespace GTBusinessLayer
         {
             return this.profile.GetRole();
         }
+
+        public bool IsRegistered(string email, string pass)
+        {
+            UsersRepo ur = new UsersRepo();
+            var result = ur.RetrieveRegistered(email,pass);
+            return result;
+        }
+
 
         public override string ToString()
         {
